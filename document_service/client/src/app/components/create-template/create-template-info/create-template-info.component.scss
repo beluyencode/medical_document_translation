@@ -1,0 +1,101 @@
+.info {
+    width: 100%;
+    height: 100%;
+
+    .info-title {
+        height: 40px;
+        border-bottom: 1px solid #e5e5e5;
+        display: flex;
+        padding: 8px 10px;
+        font-size: 14px;
+        line-height: 32px;
+        font-weight: 500;
+        align-items: center;
+    }
+
+    .info-view {
+        overflow-y: auto;
+        height: calc(100% - 40px);
+    }
+
+    .action {
+        display: flex;
+        justify-content: flex-end;
+        border-bottom: none !important;
+
+        button {
+            border-radius: 5px;
+            width: 60px;
+            border: 1px solid #e5e5e5;
+            background-color: #0d99ff;
+            color: white;
+            padding: 5px 15px;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+    }
+
+    .item {
+        width: 100%;
+        border-bottom: 1px solid #e5e5e5;
+        padding: 8px 10px;
+        font-size: 14px;
+
+        .item-title {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .item-data {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+
+            .width-100 {
+                width: 100px;
+                margin-right: 10px;
+            }
+
+            textarea {
+                resize: vertical;
+                width: 100%;
+                border: 1px solid #b4b4b4;
+                padding: 3px 6px;
+                border-radius: 4px;
+            }
+
+            textarea:focus-visible {
+                outline: none;
+
+            }
+
+            input {
+                width: 100%;
+                border: 1px solid #b4b4b4;
+                padding: 3px 6px;
+                border-radius: 4px;
+            }
+
+            input:focus-visible {
+                outline: none;
+
+            }
+
+            input[type="color"] {
+                width: 60px;
+                margin-right: 10px;
+            }
+
+            .item-data-input-color-title {
+                font-weight: 500;
+            }
+
+            .custom-ngselect {
+                width: 100%;
+            }
+
+        }
+    }
+}

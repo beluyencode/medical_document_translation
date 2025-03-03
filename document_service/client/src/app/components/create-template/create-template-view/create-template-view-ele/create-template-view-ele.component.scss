@@ -1,0 +1,94 @@
+.view-ele {
+    position: absolute;
+    cursor: pointer;
+    line-break: anywhere;
+
+    .view-ele-rev {
+        position: relative;
+        width: 100%;
+        white-space: pre-line;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .view-img-empty {
+            width: 100%;
+            height: 100%;
+            background-color: #6d6d6d;
+        }
+
+        .view-ele-ab-no-select {
+            position: absolute;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border: 1px #6d6d6d dashed;
+            top: -5px;
+            left: -5px;
+            padding: 5px;
+        }
+
+        .view-ele-ab {
+            position: absolute;
+            width: calc(100% + 10px);
+            height: calc(100% + 10px);
+            border: 1px #0d99ff solid;
+            top: -5px;
+            left: -5px;
+            padding: 5px;
+
+            .dotnet {
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-bottom: solid #0d99ff;
+                border-left: solid transparent;
+                border-width: 10px;
+                z-index: 1000;
+            }
+
+            .rotate {
+                position: absolute;
+                color: #0d99ff;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 14px !important;
+                bottom: 100%;
+            }
+
+
+            .dotnet-top-left {
+                top: -4px;
+                left: -5px;
+                cursor: nw-resize;
+            }
+
+            .dotnet-top-right {
+                top: -4px;
+                left: calc(100% + -3px);
+                cursor: nesw-resize;
+            }
+
+            .dotnet-bottom-right {
+                top: calc(100% + -3px);
+                left: -5px;
+                cursor: nesw-resize;
+            }
+
+            .dotnet-bottom-left {
+                top: calc(100% - 10px);
+                left: calc(100% - 9px);
+                cursor: nwse-resize;
+            }
+
+            .pos-dotnet {
+                position: relative;
+                width: 100%;
+                padding: 5px;
+                height: 100%;
+            }
+        }
+    }
+}

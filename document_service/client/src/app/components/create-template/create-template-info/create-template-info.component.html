@@ -1,0 +1,165 @@
+<div class='info'>
+    <div class='info-title'>
+        {{activeTemplate.name}}
+    </div>
+    <div class='info-view'>
+        <ng-container *ngIf="!isTemplate">
+            <div class='item'>
+                <div class='item-title'>
+                    Link
+                </div>
+                <div class='item-data'>
+                    <input type="text" [(ngModel)]='activeTemplate.url'>
+                </div>
+            </div>
+            <div class='item'>
+                <div class='item-title'>
+                    tỉ lệ màn hình
+                </div>
+                <div class='item-data'>
+                    <ng-select [(ngModel)]="activeTemplate.scale" (ngModelChange)="changeScale($event)"
+                        [clearable]='false' class='custom-ngselect'>
+                        <ng-option *ngFor="let car of typeScreen" [value]="car">{{car}}</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="isTemplate">
+            <div class='item'>
+                <div class='item-title'>
+                    kiểu Template
+                </div>
+                <div class='item-data'>
+                    <ng-select [(ngModel)]="activeTemplate.type" [clearable]='false' class='custom-ngselect'>
+                        <ng-option *ngFor="let car of typeTemplate" [value]="car">{{car}}</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+            <ng-container *ngIf="activeTemplate.type === typeTemplate[1]">
+                <div class='item'>
+                    <div class='item-title'>
+                        Link
+                    </div>
+                    <div class='item-data'>
+                        <input type="text" [(ngModel)]='activeTemplate.url'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Chiều rộng
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" min='0' [(ngModel)]='activeTemplate.width'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Chiều dài
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" min='0' [(ngModel)]='activeTemplate.height'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Bo góc
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" [(ngModel)]='activeTemplate.borderRadius'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Rotate (deg)
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" class='width-100' [(ngModel)]='activeTemplate.rotate'>
+                        <span class='item-data-input-color-title'>deg</span>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="activeTemplate.type === typeTemplate[0]">
+                <div class='item'>
+                    <div class='item-title'>
+                        Nội dung
+                    </div>
+                    <div class='item-data'>
+                        <textarea name="" id="" cols="30" rows="3" [(ngModel)]='activeTemplate.content'></textarea>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Chiều rộng
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" min='0' [(ngModel)]='activeTemplate.width'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Cỡ chữ
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" min='0' [(ngModel)]='activeTemplate.fontSize'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Màu chữ
+                    </div>
+                    <div class='item-data'>
+                        <input type="color" [(ngModel)]='activeTemplate.color'>
+                        <span class='item-data-input-color-title'>{{activeTemplate.color}}</span>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Màu nền
+                    </div>
+                    <div class='item-data'>
+                        <input type="color" [(ngModel)]='activeTemplate.background'>
+                        <span class='item-data-input-color-title'>{{activeTemplate.background}}</span>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Padding
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" [(ngModel)]='activeTemplate.padding'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Bo góc
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" [(ngModel)]='activeTemplate.borderRadius'>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Căn lề
+                    </div>
+                    <div class='item-data'>
+                        <ng-select [(ngModel)]="activeTemplate.align" [clearable]='false' class='custom-ngselect'>
+                            <ng-option *ngFor="let car of typeAlign" [value]="car">{{car}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div class='item'>
+                    <div class='item-title'>
+                        Rotate (deg)
+                    </div>
+                    <div class='item-data'>
+                        <input type="number" class='width-100' [(ngModel)]='activeTemplate.rotate'>
+                        <span class='item-data-input-color-title'>deg</span>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <!-- <div class='item action'>
+        <button (click)="saveAttr()">lưu</button>
+    </div> -->
+</div>

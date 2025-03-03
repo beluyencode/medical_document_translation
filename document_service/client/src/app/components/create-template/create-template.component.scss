@@ -1,0 +1,43 @@
+.create-template {
+    width: 100vw;
+    height: calc(100vh - 56px);
+    display: flex;
+    overflow: hidden;
+
+    .template-list {
+        width: 238px;
+        height: calc(100vh - 56px);
+        border-right: 2px solid #e5e5e5;
+    }
+
+    .template-view {
+        width: calc(100vw - 480px);
+        height: calc(100vh - 56px);
+        background-color: #c6c6c6;
+        position: relative;
+
+        .template-view-center {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            z-index: 0;
+        }
+    }
+
+    .template-info {
+        width: 238px;
+        height: calc(100vh - 56px);
+        border-left: 2px solid #e5e5e5;
+
+    }
+}
+
+.view-no-edit {
+    width: 100% !important;
+
+    .view-no-edit-center {
+        position: relative !important;
+        transform: none !important;
+        top: 0% !important;
+    }
+}

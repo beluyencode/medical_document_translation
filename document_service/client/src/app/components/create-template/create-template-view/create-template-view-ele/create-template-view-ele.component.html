@@ -1,0 +1,79 @@
+<div class='view-ele' [style]="{
+  position: 'absolute',
+  cursor: 'pointer',
+ 'line-break': 'anywhere'
+}" #ele *ngIf="scale && data.type === typeTemplate.TEXT" [ngStyle]="{
+    color: data.color,
+    'font-size': data.fontSize * scale +'px',
+    display: data.hidden ? 'none' : 'block',
+    top: data.y  + '%',
+    left: data.x  + '%',
+    'text-align': data.align,
+    'background-color': data.background,
+    width: data.width ? data.width * scale  +'px' : 'auto',
+    transform: 'rotate('+ data.rotate + 'deg'+')',
+    'border-radius': data.borderRadius + 'px'
+  }" (click)="active($event)">
+  <div class='view-ele-rev' [style]="{
+    position: 'relative',
+    width: '100%',
+    'white-space': 'pre-line',
+    height: '100%'
+  }" [ngStyle]="{
+    padding: data.padding + 'px'
+  }" (mousedown)="moveEle($event)">
+    {{data.content}}
+    <div class='view-ele-ab-no-select' *ngIf="!isSelect && edit"></div>
+    <div class='view-ele-ab' *ngIf="isSelect">
+      <!-- <div class="dotnet dotnet-top-left" (mousedown)="changeSize($event)"></div>
+      <div class="dotnet dotnet-top-right" (mousedown)="changeSize($event)"></div>
+      <div class="dotnet dotnet-bottom-right" (mousedown)="changeSize($event)"></div> -->
+      <div class="rotate" (mousedown)="rotate($event)" *ngIf="edit">
+        <i class="fa-solid fa-rotate-left"></i>
+      </div>
+      <div class="dotnet dotnet-bottom-left" *ngIf="edit" (mousedown)="changeSize($event)"></div>
+    </div>
+  </div>
+</div>
+
+<div class='view-ele' [style]="{
+  position: 'absolute',
+  cursor: 'pointer',
+ 'line-break': 'anywhere'
+}" #ele *ngIf="scale && data.type === typeTemplate.IMAGE" [ngStyle]="{
+    display: data.hidden ? 'none' : 'block',
+    top: data.y  + '%',
+    left: data.x  + '%',
+    width: data.width ? data.width * scale  +'px' : 'auto',
+    height: data.height ? data.height * scale  +'px' : 'auto',
+    transform: 'rotate('+ data.rotate + 'deg'+')',
+    'border-radius': data.borderRadius + 'px'
+  }" (click)="active($event)">
+  <div class='view-ele-rev' [style]="{
+    position: 'relative',
+    width: '100%',
+    'white-space': 'pre-line',
+    height: '100%'
+  }" (mousedown)="moveEle($event)">
+    <img [src]="data.url" [style]="{
+      width: '100%',
+      height: '100%'
+    }" [ngStyle]="{
+      'border-radius': data.borderRadius + 'px'
+    }" alt="" *ngIf="data.url !== ''">
+    <div class='view-img-empty' [ngStyle]="{
+      'border-radius': data.borderRadius + 'px'
+    }" *ngIf="data.url === ''">
+    </div>
+    <div class='view-ele-ab-no-select' *ngIf="!isSelect && edit"></div>
+    <div class='view-ele-ab' *ngIf="isSelect">
+      <!-- <div class="dotnet dotnet-top-left" (mousedown)="changeSize($event)"></div>
+      <div class="dotnet dotnet-top-right" (mousedown)="changeSize($event)"></div>
+      <div class="dotnet dotnet-bottom-right" (mousedown)="changeSize($event)"></div> -->
+      <div class="rotate" (mousedown)="rotate($event)" *ngIf="edit">
+        <i class="fa-solid fa-rotate-left"></i>
+      </div>
+      <div class="dotnet dotnet-bottom-left" *ngIf="edit" (mousedown)="changeSize($event)"></div>
+    </div>
+  </div>
+</div>

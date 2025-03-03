@@ -1,0 +1,163 @@
+{
+    "jsonrpc": "2.0",
+    "status": 1,
+    "message": "Successfully checked",
+    "error_grammar_count_total": 15,
+    "error_grammar_percent": "6%",
+    "check_grammar_feedback": [
+        {
+            "context": "While some people disagree with this, I complete agre that it brings some drawbacks to people and social communities.",
+            "error_grammar": "agre",
+            "feedback_grammar": "Possible spelling mistake found",
+            "feedback_grammar_suggestion": [
+                "are",
+                "age",
+                "agree",
+                "acre",
+                "Agra",
+                "GRE",
+                "ogre",
+                "AGR",
+                "ague",
+                "AGE",
+                "ARE",
+                "Ager"
+            ]
+        },
+        {
+            "context": "When individuals often hear or watch negative news, they feel the social always fight against them.",
+            "error_grammar": "always",
+            "feedback_grammar": "You have a problem with your word order. Rearrange your sentence:  \"they always feel the social\".",
+            "feedback_grammar_suggestion": [
+                "they always feel the social"
+            ]
+        },
+        {
+            "context": "For example, the media usually show the corruptions of government in Cambodia, that makes citizen disobey the authority and they often have strikes and protest on the road.",
+            "error_grammar": "and",
+            "feedback_grammar": "Use a comma before \"and\" between two independent clauses.",
+            "feedback_grammar_suggestion": [
+                ", and"
+            ]
+        },
+        {
+            "context": "For example, the media usually show the corruptions of government in Cambodia, that makes citizen disobey the authority and they often have strikes and protest on the road.",
+            "error_grammar": "often have strikes",
+            "feedback_grammar": "The adverb \"often\" is usually put between 'have' and 'strikes'.",
+            "feedback_grammar_suggestion": [
+                "have often strikes"
+            ]
+        },
+        {
+            "context": "If people always read unpleasant news and emergency on the newpapers, they will feel tired and stress.",
+            "error_grammar": "newpapers",
+            "feedback_grammar": "Possible spelling mistake found",
+            "feedback_grammar_suggestion": [
+                "newspapers",
+                "new papers"
+            ]
+        },
+        {
+            "context": "When this problem prolong for a period of time, people might sufer different kinds of diseases like headache, vasculor and cardiac ilneses.",
+            "error_grammar": "prolong",
+            "feedback_grammar": "The word \"problem\" is a singular noun. Your verb should be conjugated for a singular subject. ",
+            "feedback_grammar_suggestion": [
+                "prolongs"
+            ]
+        },
+        {
+            "context": "When this problem prolong for a period of time, people might sufer different kinds of diseases like headache, vasculor and cardiac ilneses.",
+            "error_grammar": "period of time",
+            "feedback_grammar": "Use simply \"period\".",
+            "feedback_grammar_suggestion": [
+                "period"
+            ]
+        },
+        {
+            "context": "When this problem prolong for a period of time, people might sufer different kinds of diseases like headache, vasculor and cardiac ilneses.",
+            "error_grammar": "sufer",
+            "feedback_grammar": "Possible spelling mistake found",
+            "feedback_grammar_suggestion": [
+                "super",
+                "suffer",
+                "safer",
+                "surfer",
+                "surer",
+                "Rufer"
+            ]
+        },
+        {
+            "context": "When this problem prolong for a period of time, people might sufer different kinds of diseases like headache, vasculor and cardiac ilneses.",
+            "error_grammar": "vasculor",
+            "feedback_grammar": "Possible spelling mistake found",
+            "feedback_grammar_suggestion": [
+                "vascular"
+            ]
+        },
+        {
+            "context": "When this problem prolong for a period of time, people might sufer different kinds of diseases like headache, vasculor and cardiac ilneses.",
+            "error_grammar": "ilneses",
+            "feedback_grammar": "Possible spelling mistake found",
+            "feedback_grammar_suggestion": [
+                "illness",
+                "lenses",
+                "illnesses",
+                "geneses"
+            ]
+        },
+        {
+            "context": "In sum, I believe that the trend of news reports in the newspapers or magazines to show the negative developments of society is detrimental to people and social communities because it influences people to have unacceptable behaviors and it also makes them unhealthy because it has negative effective on many persons.",
+            "error_grammar": "developments",
+            "feedback_grammar": "Your subject (the negative developments) is plural, but you have used a verb conjugated for a singular subject. Use a singular subject or a plural verb: \"\" or \"the negative developments are\". ",
+            "feedback_grammar_suggestion": [
+                "",
+                "the negative developments are"
+            ]
+        },
+        {
+            "context": "In sum, I believe that the trend of news reports in the newspapers or magazines to show the negative developments of society is detrimental to people and social communities because it influences people to have unacceptable behaviors and it also makes them unhealthy because it has negative effective on many persons.",
+            "error_grammar": "is",
+            "feedback_grammar": "The noun \"developments\" is plural, so your verb should be conjugated for a plural subject.",
+            "feedback_grammar_suggestion": [
+                "developments of society are"
+            ]
+        },
+        {
+            "context": "In sum, I believe that the trend of news reports in the newspapers or magazines to show the negative developments of society is detrimental to people and social communities because it influences people to have unacceptable behaviors and it also makes them unhealthy because it has negative effective on many persons.",
+            "error_grammar": "and",
+            "feedback_grammar": "Use a comma before \"and\" between two independent clauses.",
+            "feedback_grammar_suggestion": [
+                ", and"
+            ]
+        },
+        {
+            "context": "In sum, I believe that the trend of news reports in the newspapers or magazines to show the negative developments of society is detrimental to people and social communities because it influences people to have unacceptable behaviors and it also makes them unhealthy because it has negative effective on many persons.",
+            "error_grammar": "persons",
+            "feedback_grammar": "Unless you are using \"persons\" as a legal term meaning \"individuals,\" you should use the irregular plural form \"people\".",
+            "feedback_grammar_suggestion": [
+                "people"
+            ]
+        },
+        {
+            "context": "Helo",
+            "error_grammar": "Helo",
+            "feedback_grammar": "Possible spelling mistake found",
+            "feedback_grammar_suggestion": [
+                "Held",
+                "Help",
+                "Hello",
+                "Hero",
+                "Hell",
+                "Helm",
+                "Halo",
+                "Helot",
+                "ELO",
+                "HEL",
+                "He lo",
+                "Belo",
+                "Hely",
+                "Melo"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+<!-- <div>
+  {{this.scale}}
+  {{this.createTemplateService.currentWidth}}
+  {{this.createTemplateService.currentHeight}}
+</div> -->
+<div #eleViewParent [ngStyle]="{
+  'aspect-ratio': background.scale,
+  width: background.scale === typeScreen.PC ? '100%' :'auto',
+  height: background.scale === typeScreen.PC ? 'auto' :'100%'
+}">
+  <div class='view' [style]="{
+    'background-color': 'white',
+    position: 'relative',
+    'user-select': 'none'
+  }" (wheel)="wheel($event)" (click)="selectBackground()" #eleView [ngStyle]="{
+    'aspect-ratio': background.scale,
+    width: background.scale === typeScreen.PC ? '100%' :'auto',
+    height: background.scale === typeScreen.PC ? 'auto' :'100%'
+  }" (mouseover)="mouseOver($event)">
+    <img [style]="{
+      width: '100%',
+      height: '100%'
+    }" [src]="this.createTemplateService.background.url" alt="" draggable='false'>
+    <ng-container *ngIf="scale">
+      <app-create-template-view-ele [edit]='edit' [scale]="scale" *ngFor="let data of listTemplate"
+        [data]="data"></app-create-template-view-ele>
+    </ng-container>
+  </div>
+</div>
+<div class='view-loading' *ngIf="loading">
+  <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+</div>

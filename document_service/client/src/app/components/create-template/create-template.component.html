@@ -1,0 +1,22 @@
+<div class='create-template'>
+    <div class='template-list' *ngIf="edit">
+        <app-create-template-list></app-create-template-list>
+    </div>
+    <div class='template-view' #view [ngClass]="{'view-no-edit': !edit}">
+        <div class='template-view-center' [ngStyle]="{
+            width: this.createTemplateService.background.scale === typeScreen.PC ? '100%' : 'auto',
+            height: this.createTemplateService.background.scale === typeScreen.PC ? 'auto' : '100%',
+            left: this.createTemplateService.background.scale === typeScreen.PC ? 'auto' : '50%',
+            transform: this.createTemplateService.background.scale === typeScreen.PC ? 'translate(0, -50%)' : 'translate(-50%, -50%)',
+            overflow: 'auto'
+        }" [ngClass]="{'view-no-edit-center': !edit}">
+            <app-create-template-view [edit]="edit"></app-create-template-view>
+        </div>
+    </div>
+    <div class='template-info' *ngIf="edit">
+        <app-create-template-info></app-create-template-info>
+    </div>
+</div>
+<!-- <div class='view-no-edit' *ngIf="!edit">
+    <app-create-template-view [edit]="edit"></app-create-template-view>
+</div> -->
