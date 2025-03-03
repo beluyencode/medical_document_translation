@@ -229,7 +229,7 @@ function findAddedAndReplacedText(originalText, newText) {
 }
 
 async function translateTexts(listText) {
-    const data = await fetch('http://localhost:8000/translates', {
+    const data = await fetch(process.env.TRANSLATE_URL + 'translates', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -262,6 +262,10 @@ function removeDuplicatePrefix(text) {
 // ---------------------------------------------------
 
 // API to handle PDF upload
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
 app.post('/convert', upload.fields([{ name: 'fileOrigin', maxCount: 1 }, { name: 'fileTranslation', maxCount: 1 }]), async (req, res) => {
     try {
         if (!req.files) {

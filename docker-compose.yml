@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  document_service:
+    build:
+      context: ./document_service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./document_service:/usr/src/app
+    environment:
+      - NODE_ENV=production
+      - TRANSLATE_URL=http://translate_ai:8000
+
+  translate_ai:
+    build:
+      context: ./translate_ai
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./translate_ai:/app
+    environment:
+      - TRAINING_INTERVAL=1
+
+  onlyoffice:
+    image: onlyoffice/documentserver
+    ports:
+      - "9000:80"
+    environment:
+      - JWT_ENABLED=false

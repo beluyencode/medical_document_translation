@@ -1,0 +1,28 @@
+# Use official Python image as base
+FROM python:3.10-slim
+
+# Set the working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy necessary files
+COPY requirements.txt .
+COPY . /app
+
+# Install dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Expose the FastAPI port
+EXPOSE 8000
+
+# Set environment variables
+ENV TRAINING_INTERVAL=60
+
+# Run the application
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
