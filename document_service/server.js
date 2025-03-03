@@ -288,7 +288,7 @@ app.post('/convert', upload.fields([{ name: 'fileOrigin', maxCount: 1 }, { name:
         const pathOrigin = path.join(__dirname, 'public') + '/' + name + '_origin.docx';
         const pathTranslation = path.join(__dirname, 'public') + '/' + name + '_translation.docx';
         await PDFNet.runWithCleanup(async () => {
-            await PDFNet.addResourceSearchPath('./Lib/');
+            await PDFNet.addResourceSearchPath(path.join(__dirname, 'Lib'));
             // check if the module is available
             if (!(await PDFNet.StructuredOutputModule.isModuleAvailable())) {
                 return;

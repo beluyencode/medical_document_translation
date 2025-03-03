@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 # Copy necessary files
 COPY requirements.txt .
-COPY . /app
+COPY . .
 
 # Install dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir --upgrade pip && \
 EXPOSE 8000
 
 # Set environment variables
-ENV TRAINING_INTERVAL=60
+ENV TRAINING_INTERVAL=3600
 
 # Run the application
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python3", "app.py"]
