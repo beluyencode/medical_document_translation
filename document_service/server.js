@@ -39,7 +39,7 @@ async function modifyDocxDirectly(newPath, segments) {
         let docXmlContent = await zip.file(docXmlPath).async("text");
 
         const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(docXmlContent, "text/xml");
+        let xmlDoc = parser.parseFromString(docXmlContent, "text/xml");
 
         let xmlRemoveHeader = parser.parseFromString(docXmlContent, "text/xml");
         const header = xmlRemoveHeader.getElementsByTagName("w:tbl")[0];
