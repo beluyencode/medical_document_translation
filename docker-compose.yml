@@ -24,7 +24,7 @@ services:
     volumes:
       - ./translate_ai:/app
     environment:
-      - TRAINING_INTERVAL=1
+      - TRAINING_INTERVAL:3600
 
   onlyoffice:
     image: onlyoffice/documentserver
