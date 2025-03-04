@@ -19,10 +19,39 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI()
 
-# Load model
 model_name = "models"
+
+# Training function
+def _train_model():
+    try:
+        logger.info("Starting model training...")
+        result = subprocess.run(["python3", "training.py"], capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            logger.info("Training completed successfully.")
+            logger.info(result.stdout)
+            # Reload model
+            response = requests.post("http://localhost:8000/reload-model")
+            if response.status_code == 200:
+                logger.info("Model reloaded successfully.")
+            else:
+                logger.error("Failed to reload model.")
+        else:
+            logger.error("Training failed.")
+            logger.error(result.stderr)
+    except Exception as e:
+        logger.error("An error occurred during training.")
+        logger.error(str(e))
+
+# Check if the model folder exists, if not, download the model
+if not os.path.exists(model_name):
+    _train_model()
+
+
+# Load model
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+
 
 # Pydantic Models
 class TranslationRequest(BaseModel):
@@ -85,24 +114,6 @@ async def start_training():
 async def root():
     return {"message": "Translation API"}
 
-# Training function
-def _train_model():
-    logger.info("Starting model training...")
-    result = subprocess.run(["python3", "scripts/training.py"], capture_output=True, text=True)
-    
-    if result.returncode == 0:
-        logger.info("Training completed successfully.")
-        logger.info(result.stdout)
-        # Reload model
-        response = requests.post("http://localhost:8000/reload-model")
-        if response.status_code == 200:
-            logger.info("Model reloaded successfully.")
-        else:
-            logger.error("Failed to reload model.")
-    else:
-        logger.error("Training failed.")
-        logger.error(result.stderr)
-
 # Scheduled training
 def schedule_training():
     interval = int(os.getenv("TRAINING_INTERVAL", "60"))  # Interval in minutes
@@ -111,6 +122,7 @@ def schedule_training():
     while True:
         schedule.run_pending()
         time.sleep(1)
+
 
 # Start scheduling thread
 if __name__ == "__main__":

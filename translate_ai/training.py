@@ -56,7 +56,7 @@ tokenized_eval_dataset = eval_dataset.map(preprocess_function, batched=True)
 
 # Thiết lập các tham số huấn luyện
 training_args = Seq2SeqTrainingArguments(
-    output_dir="../models",
+    output_dir="models",
     evaluation_strategy="epoch",  # Đánh giá mô hình sau mỗi epoch
     save_strategy="epoch", 
     learning_rate=1e-5,
@@ -84,8 +84,8 @@ train_result = trainer.train()
 logger.info("Training completed.")
 
 # Lưu mô hình và tokenizer
-model.save_pretrained("../models")
-tokenizer.save_pretrained("../models")
+model.save_pretrained("models")
+tokenizer.save_pretrained("models")
 logger.info("Model and tokenizer saved.")
 
 logger.info(datetime.datetime.now())
