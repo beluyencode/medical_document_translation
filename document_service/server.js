@@ -46,6 +46,7 @@ async function modifyDocxDirectly(newPath, segments) {
         let headerString = null;
         if (header) {
             let headerString = new XMLSerializer().serializeToString(header);
+            console.log("headerString", headerString);
             xmlDoc = parser.parseFromString(docXmlContent.replaceAll(headerString, "<header:mate></header:mate>"), "text/xml");
         }
 
