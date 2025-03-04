@@ -105,12 +105,12 @@ async function modifyDocxDirectly(newPath, segments) {
                     let newRunNode = xmlDoc.createElement("w:r");
 
                     // Thêm thuộc tính màu chữ (đỏ)
-                    let newRunProperties = xmlDoc.createElement("w:rPr");
-                    let colorNode = xmlDoc.createElement("w:color");
-                    colorNode.setAttribute("w:val", "FF0000"); // Màu đỏ
+                    // let newRunProperties = xmlDoc.createElement("w:rPr");
+                    // let colorNode = xmlDoc.createElement("w:color");
+                    // colorNode.setAttribute("w:val", "FF0000"); // Màu đỏ
 
-                    newRunProperties.appendChild(colorNode);
-                    newRunNode.appendChild(newRunProperties);
+                    // newRunProperties.appendChild(colorNode);
+                    // newRunNode.appendChild(newRunProperties);
                     newRunNode.appendChild(newTextNode);
 
                     // 👉 Tạo bookmark để đánh dấu nội dung đã chèn
