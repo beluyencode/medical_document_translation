@@ -1,26 +1,26 @@
-# Use the official Node.js image from the Docker Hub
+# Use the official Node.js image
 FROM node:22-bullseye
 
-# Set the working directory
+# Set working directory
 WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --production
 
-RUN mkdir -p uploads
+# Create necessary directories
+RUN mkdir -p uploads pdf public
 
-RUN mkdir -p pdf
-
-RUN mkdir -p public
-
-# Copy the rest of the application code
+# Copy the rest of the application
 COPY . .
 
-# Expose the port the app runs on
+# Ensure node_modules exists
+RUN ls -la node_modules || npm install --production
+
+# Expose the app port
 EXPOSE 3000
 
-# Command to run the application
+# Start the application
 CMD ["node", "server.js"]
