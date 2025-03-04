@@ -40,14 +40,12 @@ async function modifyDocxDirectly(newPath, segments) {
 
         const parser = new DOMParser();
         let xmlDoc = parser.parseFromString(docXmlContent, "text/xml");
-
-        let xmlRemoveHeader = parser.parseFromString(docXmlContent, "text/xml");
-        const header = xmlRemoveHeader.getElementsByTagName("w:tbl")[0];
+        const header = xmlDoc.getElementsByTagName("w:tbl")[0];
         let headerString = null;
         if (header) {
             let headerString = new XMLSerializer().serializeToString(header);
-            console.log("headerString", headerString);
-            xmlDoc = parser.parseFromString(docXmlContent.replaceAll(headerString, "<header:mate></header:mate>"), "text/xml");
+            let xmlString = new XMLSerializer().serializeToString(xmlDoc);
+            xmlDoc = parser.parseFromString(xmlString.replaceAll(headerString, "<header:mate></header:mate>"), "text/xml");
         }
 
         const textNodes = xmlDoc.getElementsByTagName("w:t");
