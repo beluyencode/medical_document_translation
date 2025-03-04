@@ -8,8 +8,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./document_service:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./document_service/public:/usr/src/app/public
+      - ./document_service/uploads:/usr/src/app/uploads
+      - ./document_service/pdf:/usr/src/app/pdf
     environment:
       - NODE_ENV=production
       - TRANSLATE_URL=http://translate_ai:8000/
