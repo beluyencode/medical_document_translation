@@ -4,13 +4,16 @@ FROM node:22-bullseye
 # Set the working directory
 WORKDIR /usr/src/app
 
-# Copy the rest of the application code
-COPY . .
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
 RUN mkdir -p uploads pdf public
+
+# Copy the rest of the application code
+COPY . .
 
 # Expose the port the app runs on
 EXPOSE 3000

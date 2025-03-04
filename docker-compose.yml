@@ -9,6 +9,7 @@ services:
       - "3000:3000"
     volumes:
       - ./document_service:/usr/src/app
+      - /usr/src/app/node_modules
     environment:
       - NODE_ENV=production
       - TRANSLATE_URL=http://translate_ai:8000/
