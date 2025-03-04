@@ -47,6 +47,8 @@ async function modifyDocxDirectly(newPath, segments) {
         if (header) {
             let headerString = new XMLSerializer().serializeToString(header);
             let xmlString = new XMLSerializer().serializeToString(xmlDoc);
+            console.log("insert header", xmlString.indexOf(headerString));
+
             xmlDoc = parser.parseFromString(xmlString.replaceAll(headerString, "<header:mate></header:mate>"), "text/xml");
         }
 
@@ -141,7 +143,7 @@ async function modifyDocxDirectly(newPath, segments) {
         const serializer = new XMLSerializer();
         let newXml = serializer.serializeToString(xmlDoc);
         if (headerString) {
-            console.log("🔥", newXml == newXml.replaceAll("<header:mate></header:mate>", headerString));
+            console.log("insert header", newXml.indexOf("<header:mate></header:mate>"));
             newXml = newXml.replaceAll("<header:mate></header:mate>", headerString);
         }
         zip.file(docXmlPath, newXml);
