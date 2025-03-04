@@ -277,11 +277,13 @@ app.post('/convert', upload.fields([{ name: 'fileOrigin', maxCount: 1 }, { name:
         }
 
         const fileTranslationNewPath = path.join(pdfDir, req.files.fileTranslation[0].filename) + ".pdf";
-        fs.renameSync(req.files.fileTranslation[0].path, fileTranslationNewPath);
+        fs.copyFileSync(req.files.fileTranslation[0].path, fileTranslationNewPath);
+        fs.unlinkSync(req.files.fileTranslation[0].path);
         req.files.fileTranslation[0].path = fileTranslationNewPath;
 
         const fileOriginPath = path.join(pdfDir, req.files.fileOrigin[0].filename) + ".pdf";
-        fs.renameSync(req.files.fileOrigin[0].path, fileOriginPath);
+        fs.copyFileSync(req.files.fileOrigin[0].path, fileOriginPath);
+        fs.unlinkSync(req.files.fileOrigin[0].path);
         req.files.fileOrigin[0].path = fileOriginPath;
 
         const name = guidGenerator();
