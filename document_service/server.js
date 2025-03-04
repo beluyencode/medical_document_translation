@@ -137,9 +137,10 @@ async function modifyDocxDirectly(newPath, segments) {
         });
 
         const serializer = new XMLSerializer();
-        const newXml = serializer.serializeToString(xmlDoc);
+        let newXml = serializer.serializeToString(xmlDoc);
         if (headerString) {
-            newXml.replaceAll("<header:mate></header:mate>", headerString)
+            console.log("🔥", newXml == newXml.replaceAll("<header:mate></header:mate>", headerString));
+            newXml = newXml.replaceAll("<header:mate></header:mate>", headerString);
         }
         zip.file(docXmlPath, newXml);
 
