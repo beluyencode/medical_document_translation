@@ -30,17 +30,24 @@ const upload = require('multer')({
 });
 
 // ----------------- Helper -----------------
-
 async function modifyDocxDirectly(newPath, segments) {
     try {
         const data = fs.readFileSync(newPath);
         const zip = await JSZip.loadAsync(data);
 
         const docXmlPath = "word/document.xml";
-        const docXmlContent = await zip.file(docXmlPath).async("text");
+        let docXmlContent = await zip.file(docXmlPath).async("text");
 
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(docXmlContent, "text/xml");
+
+        let xmlRemoveHeader = parser.parseFromString(docXmlContent, "text/xml");
+        const header = xmlRemoveHeader.getElementsByTagName("w:tbl")[0];
+        let headerString = null;
+        if (header) {
+            let headerString = new XMLSerializer().serializeToString(header);
+            xmlDoc = parser.parseFromString(docXmlContent.replaceAll(headerString, "<header:mate></header:mate>"), "text/xml");
+        }
 
         const textNodes = xmlDoc.getElementsByTagName("w:t");
 
@@ -132,7 +139,9 @@ async function modifyDocxDirectly(newPath, segments) {
 
         const serializer = new XMLSerializer();
         const newXml = serializer.serializeToString(xmlDoc);
-
+        if (headerString) {
+            newXml.replaceAll("<header:mate></header:mate>", headerString)
+        }
         zip.file(docXmlPath, newXml);
 
         zip.generateAsync({ type: "nodebuffer" }).then((buffer) => {
