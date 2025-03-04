@@ -36,12 +36,14 @@ async function modifyDocxDirectly(newPath, segments) {
         const zip = await JSZip.loadAsync(data);
 
         const docXmlPath = "word/document.xml";
-        let docXmlContent = await zip.file(docXmlPath).async("text");
+        const docXmlContent = await zip.file(docXmlPath).async("text");
 
         const parser = new DOMParser();
         let xmlDoc = parser.parseFromString(docXmlContent, "text/xml");
         const header = xmlDoc.getElementsByTagName("w:tbl")[0];
         let headerString = null;
+        console.log("header", header);
+
         if (header) {
             let headerString = new XMLSerializer().serializeToString(header);
             let xmlString = new XMLSerializer().serializeToString(xmlDoc);
