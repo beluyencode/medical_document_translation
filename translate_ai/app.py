@@ -84,14 +84,14 @@ async def translate_bulk(request: TranslationsRequest):
 
 @app.post("/add-training-data")
 async def add_training_data(request: TrainingDataRequest):
-    with open("data/train.source", "a", encoding="utf-8") as src_f, open("data/train.target", "a", encoding="utf-8") as tgt_f:
+    with open("train.source", "a", encoding="utf-8") as src_f, open("train.target", "a", encoding="utf-8") as tgt_f:
         src_f.write(request.source_text + "\n")
         tgt_f.write(request.target_text + "\n")
     return {"message": "Training data added successfully"}
 
 @app.post("/add-training-datas")
 async def add_training_datas(request: TrainingDatasRequest):
-    with open("data/train.source", "a", encoding="utf-8") as src_f, open("data/train.target", "a", encoding="utf-8") as tgt_f:
+    with open("train.source", "a", encoding="utf-8") as src_f, open("train.target", "a", encoding="utf-8") as tgt_f:
         for item in request.data:
             src_f.write(item.source_text + "\n")
             tgt_f.write(item.target_text + "\n")
