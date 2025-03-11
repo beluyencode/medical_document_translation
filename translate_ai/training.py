@@ -23,6 +23,8 @@ def load_data(source_file, target_file):
         src_lines = src_f.readlines()
         tgt_lines = tgt_f.readlines()
     logger.info(f"Loaded {len(src_lines)} source lines and {len(tgt_lines)} target lines")
+    if len(src_lines) == 0 or len(tgt_lines) == 0:
+        return None
     return Dataset.from_dict({"translation": [{"en": src.strip(), "vi": tgt.strip()} for src, tgt in zip(src_lines, tgt_lines)]})
 
 
@@ -36,6 +38,10 @@ if not os.path.exists(source_file) or not os.path.exists(target_file):
 
 train_dataset = load_data(source_file, target_file)
 eval_dataset = load_data(eval_source_file, eval_target_file)
+
+if train_dataset is None or eval_dataset is None:
+    logger.info("No data loaded. Exiting.")
+    exit()
 
 # Tạo tokenizer và mô hình
 model_name = "VietAI/envit5-translation"
@@ -59,12 +65,13 @@ training_args = Seq2SeqTrainingArguments(
     output_dir="models",
     evaluation_strategy="epoch",  # Đánh giá mô hình sau mỗi epoch
     save_strategy="epoch", 
-    learning_rate=1e-5,
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
-    weight_decay=0.01,
-    num_train_epochs=3,
-    predict_with_generate=True,
+    learning_rate=1e-5,  # Learning rate thấp để fine-tune nhẹ nhàng
+    per_device_train_batch_size=8,  # Batch size nhỏ
+    num_train_epochs=5,  # Fine-tune nhiều epoch hơn nếu dữ liệu ít
+    warmup_steps=100,  # Dùng warmup để tránh gradient quá mạnh
+    save_total_limit=2,  # Giữ lại 2 checkpoints mới nhất
+    logging_steps=10,  # Ghi log mỗi 10 steps
+    load_best_model_at_end=True  # Tự động load mô hình tốt nhất
 )
 
 data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
@@ -89,6 +96,12 @@ tokenizer.save_pretrained("models")
 logger.info("Model and tokenizer saved.")
 
 logger.info(datetime.datetime.now())
+
+# Xóa dữ liệu trong file train
+with open(source_file, 'w', encoding='utf-8') as src_f, open(target_file, 'w', encoding='utf-8') as tgt_f:
+    src_f.write("")
+    tgt_f.write("")
+logger.info(f"Data in {source_file} and {target_file} has been cleared.")
 
 # In kết quả huấn luyện
 print(train_result)

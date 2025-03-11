@@ -116,7 +116,7 @@ async def root():
 
 # Scheduled training
 def schedule_training():
-    interval = int(os.getenv("TRAINING_INTERVAL", "60"))  # Interval in minutes
+    interval = int(os.getenv("TRAINING_INTERVAL", "3600"))  # Interval in minutes
     logger.info(f"Scheduling model training every {interval} minutes.")
     schedule.every(interval).minutes.do(_train_model)
     while True:

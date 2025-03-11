@@ -1,10 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 src_text = [
-    "en: headache, cannot suffer, high fever; high blood pressure",
-    "en: 150/100; 105 heart beat/min",
-    "en: Ultrasound with intensive drug Check allergy",
-    "en: pain killer",
+    "en: I love you",
 ]
 
 # Specify the multilingual model
