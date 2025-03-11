@@ -14,9 +14,7 @@ const jsDiff = require('diff');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors({
-    origin: '*',
-}));
+
 
 const upload = require('multer')({
     dest: 'uploads/'
