@@ -102,6 +102,7 @@ async def reload_model():
     global tokenizer, model
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    logger.info("Model reloaded successfully.")
     return {"message": "Model reloaded successfully"}
 
 @app.get("/train-model")
