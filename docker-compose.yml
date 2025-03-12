@@ -33,4 +33,4 @@ services:
     environment:
       - JWT_ENABLED=false
     volumes:
-      - ./web-app/apps/common/main/resources/img/:/var/www/onlyoffice/documentserver/web-apps/apps/common/main/resources/img/
+      - ./web-app/apps/common/main/resources/img/header:/var/www/onlyoffice/documentserver/web-apps/apps/common/main/resources/img/header
