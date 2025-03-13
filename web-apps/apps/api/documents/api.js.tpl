@@ -1245,6 +1245,8 @@ b.prototype.lockWithTimeout=function(a){this.lockCounter++;var c=this;setTimeout
             iframe.style.overflow = "hidden";
             document.body.style.overscrollBehaviorY = "contain";
 		}
+        
+        window.docsEditorIframe = iframe;
         return iframe;
     }
 

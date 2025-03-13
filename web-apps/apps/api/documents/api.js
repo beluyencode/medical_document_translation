@@ -1245,6 +1245,8 @@ b.prototype.lockWithTimeout=function(a){this.lockCounter++;var c=this;setTimeout
             iframe.style.overflow = "hidden";
             document.body.style.overscrollBehaviorY = "contain";
 		}
+        
+        window.docsEditorIframe = iframe;
         return iframe;
     }
 
@@ -1272,7 +1274,7 @@ b.prototype.lockWithTimeout=function(a){this.lockCounter++;var c=this;setTimeout
 
     function extendAppPath(config,  path) {
         if ( !config.isLocalFile ) {
-            const ver = '/8.3.0-e909cb4f6dc52a3c93996904951ee530';
+            const ver = '/8.3.0-570bd0ffce8c4c151014f18885e43128';
             if ( ver.lastIndexOf('{{') < 0 && path.indexOf(ver) < 0 ) {
                 const pos = path.indexOf('/web-apps/app');
                 if ( pos > 0 )

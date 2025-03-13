@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   document_service:
     build:
@@ -33,4 +31,6 @@ services:
     environment:
       - JWT_ENABLED=false
     volumes:
-      - ./web-app/apps/common/main/resources/img/header:/var/www/onlyoffice/documentserver/web-apps/apps/common/main/resources/img/header
+      - ./web-apps/apps/common/main/resources/img/:/var/www/onlyoffice/documentserver/web-apps/apps/common/main/resources/img/
+      - ./web-apps/apps/documenteditor/main/:/var/www/onlyoffice/documentserver/web-apps/apps/documenteditor/main/
+      - ./web-apps/apps/api/documents/:/var/www/onlyoffice/documentserver/web-apps/apps/api/documents/
