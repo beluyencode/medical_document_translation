@@ -39157,6 +39157,7 @@ if (void 0 === Common.UI && (Common.UI = {}), Common.UI.ExternalUsers = new func
                 i = this.textLoadingDocument + ": " + Common.Utils.String.fixedDigits(Math.min(Math.round(100 * i), 100), 3, "  ") + "%", e ? e.innerHTML = i : this.loadMask && this.loadMask.setTitle(i)
             },
             onEditorPermissions: function(t) {
+                // skip check version build js
                 var e = t.asc_getLicenseType();
                 if (Asc.c_oLicenseResult.Expired === e || Asc.c_oLicenseResult.Error === e || Asc.c_oLicenseResult.ExpiredTrial === e || Asc.c_oLicenseResult.NotBefore === e || Asc.c_oLicenseResult.ExpiredLimited === e) return Common.UI.warning({
                     title: Asc.c_oLicenseResult.NotBefore === e ? this.titleLicenseNotActive : this.titleLicenseExp,
@@ -39164,7 +39165,7 @@ if (void 0 === Common.UI && (Common.UI = {}), Common.UI.ExternalUsers = new func
                     buttons: [],
                     closable: !1
                 }), void((this._isDocReady || this._isPermissionsInited) && (this.disableEditing(!0), Common.NotificationCenter.trigger("api:disconnect")));
-                if (!this.onServerVersion(t.asc_getBuildVersion()) && this.onLanguageLoaded())
+                if (true && this.onLanguageLoaded())
                     if (this._isDocReady || this._isPermissionsInited) this.api.asc_LoadDocument();
                     else {
                         var i = /^(?:(pdf|djvu|xps|oxps))$/.test(this.document.fileType) && !this.appOptions.isPDFForm;
