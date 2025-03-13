@@ -115,7 +115,7 @@ async function modifyDocxDirectly(newPath, segments) {
 
                     // 👉 Tạo thẻ <w:ins> để đánh dấu là Track Changes
                     let trackChangeNode = xmlDoc.createElement("w:ins");
-                    trackChangeNode.setAttribute("w:author", "Bé luyện code");
+                    trackChangeNode.setAttribute("w:author", "AI dịch thuật");
                     trackChangeNode.setAttribute("w:date", new Date().toISOString()); // Ngày hiện tại
                     trackChangeNode.appendChild(bookmarkStart);
                     trackChangeNode.appendChild(newRunNode);
