@@ -1,0 +1,98 @@
+# Hệ Thống Dịch Tài Liệu
+
+Dự án này là một hệ thống dịch tài liệu toàn diện với nhiều dịch vụ tích hợp. Nó cung cấp các tính năng quản lý tài liệu, dịch thuật bằng AI và giao diện editor file docx trên web.
+
+## Cấu Trúc Dự Án
+
+Hệ thống bao gồm ba thành phần chính:
+
+1. **Document Service** - Một dịch vụ quản lý tải lên tài liệu, lưu trữ và xử lý PDF
+2. **Translate AI** - Dịch vụ học máy để dịch tài liệu
+3. **Onlyoffice Service** - Dịch vụ để quản lý và edit file docx trên trình duyệt
+
+## Dịch Vụ
+
+### Document Service
+
+Một dịch vụ dựa trên Node.js để quản lý tài liệu:
+
+- Tải lên và lưu trữ tài liệu
+- Track change tài liệu mới so với tài liệu gốc
+- Convert pdf sang docx
+- Lấy được Track change của file sau khi edit
+- Chỉnh sửa file docx
+
+**Công Nghệ:**
+- Node.js
+- Express.js
+- Docker
+
+
+### Translate AI
+
+Dịch vụ AI để dịch tài liệu:
+
+- Sửa dụng model VietAI/envit5-translation để dịch thuật
+- Fine tune lại model
+- API cho các yêu cầu dịch thuật
+
+**Công Nghệ:**
+- Python
+- Transformers
+- Docker
+
+### Onlyoffice
+
+Dịch vụ onlyoffice (Image onlyoffice/documentserver) để edit file trên trình duyệt
+
+- Sửa file docx
+- convert docx to pdf
+- Xử lý track change của người dùng trên editor
+
+**Công Nghệ:**
+- Docker
+
+**Note**
+- Image onlyoffice/documentserver sử dụng thêm Postgresql và RabbitMQ để quản lý và cache file trên trình editor
+- Folder web-apps để mount vào container custom lại view của onlyoffice
+
+## Cài Đặt và Cài Đặt
+
+### Yêu Cầu
+
+- Docker và Docker Compose
+- Node.js (cho phát triển cục bộ)
+- Python (cho phát triển cục bộ)
+
+### Khởi Động Dịch Vụ
+
+Sử dụng Docker Compose để khởi động tất cả các dịch vụ:
+
+```bash
+docker-compose up
+```
+
+## Phát Triển
+
+### Dịch Vụ Tài Liệu
+
+```bash
+cd document_service
+npm install
+npm start
+```
+
+### AI Dịch Thuật
+
+```bash
+cd translate_ai
+pip install -r requirements.txt
+python app.py
+```
+
+## Huấn Luyện Mô Hình Dịch Tùy Chỉnh
+
+```bash
+cd translate_ai
+python training.py
+```
