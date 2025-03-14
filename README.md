@@ -93,6 +93,9 @@ python app.py
 ```
 
 ## Huấn Luyện Mô Hình Dịch Tùy Chỉnh
+- Data cho việc training nằm ở file train.source và file train.target
+- train.source chứa text của bản gốc
+- train.target chứa text sau khi dịch
 
 ```bash
 cd translate_ai
