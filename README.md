@@ -76,7 +76,7 @@ docker-compose up
 
 ## Phát Triển
 
-### Dịch Vụ Tài Liệu
+### Document Service
 
 ```bash
 cd document_service
@@ -84,7 +84,7 @@ npm install
 npm start
 ```
 
-### AI Dịch Thuật
+### Translate AI
 
 ```bash
 cd translate_ai
