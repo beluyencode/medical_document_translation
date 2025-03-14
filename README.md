@@ -1,6 +1,6 @@
 # Hệ Thống Dịch Tài Liệu
 
-Dự án này là một hệ thống dịch tài liệu toàn diện với nhiều dịch vụ tích hợp. Nó cung cấp các tính năng quản lý tài liệu, dịch thuật bằng AI và giao diện editor file docx trên web.
+Dự án này là một hệ thống dịch tài liệu toàn diện với nhiều dịch vụ tích hợp. Nó cung cấp các tính năng quản lý tài liệu, dịch thuật bằng AI và giao diện edit file docx trên web.
 
 ## Cấu Trúc Dự Án
 
