@@ -43,7 +43,7 @@ Dịch vụ AI để dịch tài liệu:
 - Transformers
 - Docker
 
-### Onlyoffice
+### Onlyoffice Service
 
 Dịch vụ onlyoffice (Image onlyoffice/documentserver) để edit file trên trình duyệt
 
