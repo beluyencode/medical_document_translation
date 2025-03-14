@@ -6,8 +6,8 @@ Dự án này là một hệ thống dịch tài liệu toàn diện với nhi�
 
 Hệ thống bao gồm ba thành phần chính:
 
-1. **Document Service** - Một dịch vụ quản lý tải lên tài liệu, lưu trữ và xử lý PDF
-2. **Translate AI** - Dịch vụ học máy để dịch tài liệu
+1. **Document Service** - Một dịch vụ quản lý tải lên tài liệu, lưu trữ và xử lý document
+2. **Translate AI** - Dịch vụ AI để dịch tài liệu
 3. **Onlyoffice Service** - Dịch vụ để quản lý và edit file docx trên trình duyệt
 
 ## Dịch Vụ
@@ -20,13 +20,15 @@ Một dịch vụ dựa trên Node.js để quản lý tài liệu:
 - Track change tài liệu mới so với tài liệu gốc
 - Convert pdf sang docx
 - Lấy được Track change của file sau khi edit
-- Chỉnh sửa file docx
+- Chỉnh sửa content file docx
 
 **Công Nghệ:**
 - Node.js
 - Express.js
 - Docker
 
+**Note**
+- Xử dụng thư viện diff để check change của file mới so với file gốc
 
 ### Translate AI
 
@@ -45,7 +47,7 @@ Dịch vụ AI để dịch tài liệu:
 
 Dịch vụ onlyoffice (Image onlyoffice/documentserver) để edit file trên trình duyệt
 
-- Sửa file docx
+- Sửa file docx trên trình duyệt
 - convert docx to pdf
 - Xử lý track change của người dùng trên editor
 
@@ -53,7 +55,7 @@ Dịch vụ onlyoffice (Image onlyoffice/documentserver) để edit file trên t
 - Docker
 
 **Note**
-- Image onlyoffice/documentserver sử dụng thêm Postgresql và RabbitMQ để quản lý và cache file trên trình editor
+- Image onlyoffice/documentserver sử dụng thêm Postgresql và RabbitMQ để quản lý và cache file trên trình duyệt
 - Folder web-apps để mount vào container custom lại view của onlyoffice
 
 ## Cài Đặt và Cài Đặt
