@@ -28,7 +28,7 @@ Một dịch vụ dựa trên Node.js để quản lý tài liệu:
 - Docker
 
 **Note**
-- Xử dụng thư viện diff để check change của file mới so với file gốc
+- Sử dụng thư viện diff để check change của file mới so với file gốc
 
 ### Translate AI
 
