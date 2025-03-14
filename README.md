@@ -8,7 +8,7 @@ Hệ thống bao gồm ba thành phần chính:
 
 1. **Document Service** - Một dịch vụ quản lý tải lên tài liệu, lưu trữ và xử lý document
 2. **Translate AI** - Dịch vụ AI để dịch tài liệu
-3. **Onlyoffice Service** - Dịch vụ để quản lý và edit file docx trên trình duyệt
+3. **Onlyoffice Service** - Dịch vụ để quản lý và edit file docx trên trình duyệt (https://github.com/ONLYOFFICE/DocumentServer)
 
 ## Dịch Vụ
 
@@ -34,7 +34,7 @@ Một dịch vụ dựa trên Node.js để quản lý tài liệu:
 
 Dịch vụ AI để dịch tài liệu:
 
-- Sửa dụng model VietAI/envit5-translation để dịch thuật
+- Sửa dụng model VietAI/envit5-translation để dịch thuật (https://github.com/vietai/mTet)
 - Fine tune lại model
 - API cho các yêu cầu dịch thuật
 
