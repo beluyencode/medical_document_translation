@@ -34,8 +34,8 @@ Một dịch vụ dựa trên Node.js để quản lý tài liệu:
 
 Dịch vụ AI để dịch tài liệu:
 
-- Sửa dụng model VietAI/envit5-translation để dịch thuật (https://github.com/vietai/mTet)
-- Fine tune lại model
+- Sử dụng model VietAI/envit5-translation để dịch thuật (https://github.com/vietai/mTet)
+- Fine-tune lại model
 - API cho các yêu cầu dịch thuật
 
 **Công Nghệ:**
@@ -47,8 +47,8 @@ Dịch vụ AI để dịch tài liệu:
 
 Dịch vụ onlyoffice (Image onlyoffice/documentserver) để edit file trên trình duyệt
 
-- Sửa file docx trên trình duyệt
-- convert docx to pdf
+- file docx trên trình duyệt
+- Chuyển đổi docx sang pdf
 - Xử lý track change của người dùng trên editor
 
 **Công Nghệ:**
@@ -58,7 +58,7 @@ Dịch vụ onlyoffice (Image onlyoffice/documentserver) để edit file trên t
 - Image onlyoffice/documentserver sử dụng thêm Postgresql và RabbitMQ để quản lý và cache file trên trình duyệt
 - Folder web-apps để mount vào container custom lại view của onlyoffice
 
-## Cài Đặt và Cài Đặt
+## Cài Đặt và Khởi Chạy
 
 ### Yêu Cầu
 
