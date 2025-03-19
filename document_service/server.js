@@ -332,7 +332,7 @@ app.post('/convert', upload.fields([{ name: 'fileOrigin', maxCount: 1 }, { name:
         const segmentsTranslate = mergeSegmentTranslate(segments, marianData.translation);
 
         await modifyDocxDirectly(pathTranslation, segmentsTranslate);
-        res.json({ message: 'File converted successfully', path: `${name}_translation.docx`, changed: segments });
+        res.json({ message: 'File converted successfully', path: `${name}_translation.docx`, changed: segmentsTranslate.map(({ original, translated }) => original) });
     } catch (error) {
         console.error("Error converting PDF to DOCX:", error);
         res.status(500).send('Error converting PDF to DOCX.');
