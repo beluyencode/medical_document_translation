@@ -212,7 +212,7 @@ function mergeSegmentTranslate(segments, marianData) {
             original: segment,
             translated: marianData[index],
         };
-    });
+    }).filter(({ original, translated }) => original !== translated);
 }
 
 function findAddedAndReplacedText(originalText, newText) {
