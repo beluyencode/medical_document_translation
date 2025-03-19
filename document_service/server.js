@@ -8,7 +8,6 @@ const port = 3000;
 const JSZip = require("jszip");
 const { DOMParser, XMLSerializer } = require("xmldom");
 const jsDiff = require('diff');
-
 // const mammoth = require("mammoth");
 
 app.use(express.static('public'));
@@ -31,16 +30,30 @@ async function modifyDocxDirectly(newPath, segments) {
 
         const parser = new DOMParser();
         let xmlDoc = parser.parseFromString(docXmlContent, "text/xml");
-        const header = xmlDoc.getElementsByTagName("w:tbl")[0];
-        let headerString = null;
-        console.log("header", header);
+        let tables = xmlDoc.getElementsByTagName("w:tbl");
+        const tablesArray = Array.from(tables);
+        const headerTables = [];
 
-        if (header) {
-            let headerString = new XMLSerializer().serializeToString(header);
-            let xmlString = new XMLSerializer().serializeToString(xmlDoc);
-            console.log("insert header", xmlString.indexOf(headerString));
+        if (tablesArray.length) {
+            // Chuyển HTMLCollection sang Array để có thể sử dụng filter
+            // Phần tử đầu tiên để so sánh
+            const firstTable = tablesArray[0];
+            const firstTableStr = firstTable.textContent;
+            
+            // Lọc ra các phần tử giống phần tử đầu tiên
+            const matchingTables = tablesArray.filter((node) => node.textContent === firstTableStr);
+            console.log("matchingTables", matchingTables.length);
 
-            xmlDoc = parser.parseFromString(xmlString.replaceAll(headerString, "<header:mate></header:mate>"), "text/xml");
+            matchingTables.forEach((table) => {
+                const parent = table.parentNode;
+                if (parent) {
+                    // Tạo phần tử mới với namespace XML
+                    const newElement = xmlDoc.createElement("w:tbl");
+                    parent.replaceChild(newElement, table);
+                    headerTables.push(newElement);
+                }
+            });
+            
         }
 
         const textNodes = xmlDoc.getElementsByTagName("w:t");
@@ -131,12 +144,18 @@ async function modifyDocxDirectly(newPath, segments) {
             }
         });
 
+       
+        if (headerTables.length) {
+            headerTables.forEach((headerTag, index) => {
+                const parent = headerTag.parentNode;
+                if (parent) {
+                    const newTable = tablesArray[index].cloneNode(true); // Tạo bản sao của bảng gốc
+                    parent.replaceChild(newTable, headerTag);
+                }
+            });
+        }
         const serializer = new XMLSerializer();
         let newXml = serializer.serializeToString(xmlDoc);
-        if (headerString) {
-            console.log("insert header", newXml.indexOf("<header:mate></header:mate>"));
-            newXml = newXml.replaceAll("<header:mate></header:mate>", headerString);
-        }
         zip.file(docXmlPath, newXml);
 
         zip.generateAsync({ type: "nodebuffer" }).then((buffer) => {
@@ -198,7 +217,6 @@ function mergeSegmentTranslate(segments, marianData) {
 
 function findAddedAndReplacedText(originalText, newText) {
     const diffResult = jsDiff.diffWords(originalText, newText);
-    console.log(diffResult);
 
     const data = [];
 
@@ -246,7 +264,6 @@ async function translateTexts(listText) {
 }
 
 function removeDuplicatePrefix(text) {
-    console.log(text);
 
     // Biểu thức chính quy để tìm đoạn lặp
     const pattern = /(Discharge Summaries[\s\S]*?Verified Date:\s*\d{2} \w{3} \d{4} \d{2}:\d{2}:\d{2})/g;
